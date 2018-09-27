@@ -42,27 +42,58 @@ public class Gestion {
 
     // OPCION3.- Listar coche
 
-    protected String listarCoche (String marca, String modelo, String matricula, Motor cv, double estado) {
+    protected String listarCoche () {
 
-        if (listaCoches.get(matricula) == null) {
+        if (listaCoches.size()==0) {
             return "EL LISTADO DE COCHES ESTA VACIO";
         }
         else {
-            Enumeration<Coche> Listado;
-            String salida = "MARCA: " + marca + "\n" +
-                    "MODELO: " + modelo + "\n" +
-                    "MATRICULA: " + matricula + "\n" +
-                    "CV: " + cv  + "\n" +
-                    "ESTADO: " + estado + "\n";
+            Enumeration<Coche> Listado = listaCoches.elements();
+            String salida = "";
+
+            while (Listado.hasMoreElements()) {
+                salida += "MARCA: " + Listado.nextElement().getMarca() + "\n" +
+                    "MODELO: " + Listado.nextElement().getModelo() + "\n" +
+                    "MATRICULA: " + Listado.nextElement().getMatricula() + "\n" +
+                    "CV: " + Listado.nextElement().getMotor().getCv()  + "\n" +
+                    "ESTADO: " + Listado.nextElement().isEstadoGarage() + "\n";
+            }
+
             return salida;
         }
     }
 
     // OPCION 4.- Mostrar precios arreglos
 
+    protected String preciosArreglos () {
+
+        return "TOTAL COBRADO: " + totalCobrado;
+    }
+
     // OPCION 5.- Buscar coche
 
+    protected String buscarCoche (String matricula) {
+
+        if (listaCoches.size()==0) {
+            return "EL LISTADO DE COCHES ESTA VACIO";
+        }
+        else {
+
+            String salida = "MARCA: " + listaCoches.get(matricula).getMarca() + "\n" +
+                    "MODELO: " + listaCoches.get(matricula).getModelo() + "\n" +
+                    "MATRICULA: " + listaCoches.get(matricula).getMatricula() + "\n" +
+                    "CV: " + listaCoches.get(matricula).getMotor().getCv()  + "\n" +
+                    "ESTADO: " + listaCoches.get(matricula).isEstadoGarage() + "\n";
+            return salida;
+        }
+    }
+
     // OPCION 6.- Exportar coches
+
+    protected String exportarCoches () {
+
+        return "";
+    }
 
     // OPCION 0.- Salir
 
