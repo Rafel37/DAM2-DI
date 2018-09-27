@@ -1,6 +1,8 @@
 package Pracitica_Garage;
 
-public class Coche {
+import java.io.Serializable;
+
+public class Coche implements Serializable {
 
     //VARIABLES
 
@@ -14,6 +16,20 @@ public class Coche {
 
     Motor motor;
 
+    //TRADUZTOR BOOLEAN
+
+    protected String traduztor() {
+
+        if (isEstadoGarage()) {
+
+            return "ENTREGADO";
+        }
+        else {
+            return "PENDIENTE";
+        }
+
+    }
+
     //CONSTRUCTOR
 
     public Coche(String marca, String modelo, String matricula, double precioAveria, boolean estadoGarage, Motor motor) {
@@ -23,6 +39,10 @@ public class Coche {
         this.precioAveria = precioAveria;
         this.estadoGarage = estadoGarage;
         this.motor = motor;
+    }
+
+    public Coche() {
+
     }
 
     //GETTER

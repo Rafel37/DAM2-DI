@@ -2,13 +2,19 @@ package Pracitica_Garage;
 
 import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
 public class Gestion {
 
-    Hashtable<String, Coche> listaCoches = new Hashtable<>();
+    Hashtable<String, Coche> listaCoches = new Hashtable();
     double totalCobrado = 0;
+    File f = new File("/src/Pracitica_Garage/ficheros/coches.obj");
 
     // OPCION 1.- Añadir coche
 
@@ -56,7 +62,7 @@ public class Gestion {
                     "MODELO: " + Listado.nextElement().getModelo() + "\n" +
                     "MATRICULA: " + Listado.nextElement().getMatricula() + "\n" +
                     "CV: " + Listado.nextElement().getMotor().getCv()  + "\n" +
-                    "ESTADO: " + Listado.nextElement().isEstadoGarage() + "\n";
+                    "ESTADO: " + Listado.nextElement().traduztor() + "\n";
             }
 
             return salida;
@@ -83,7 +89,7 @@ public class Gestion {
                     "MODELO: " + listaCoches.get(matricula).getModelo() + "\n" +
                     "MATRICULA: " + listaCoches.get(matricula).getMatricula() + "\n" +
                     "CV: " + listaCoches.get(matricula).getMotor().getCv()  + "\n" +
-                    "ESTADO: " + listaCoches.get(matricula).isEstadoGarage() + "\n";
+                    "ESTADO: " + listaCoches.get(matricula).traduztor() + "\n";
             return salida;
         }
     }
@@ -92,9 +98,42 @@ public class Gestion {
 
     protected String exportarCoches () {
 
-        return "";
+        ObjectOutputStream exportar = null;
+
+        Enumeration<Coche> Listado = listaCoches.elements();
+
+        ArrayList<Coche> ArrayLista = new ArrayList<>();
+
+        while (Listado.hasMoreElements()) {
+
+            ArrayLista.add(Listado.nextElement());
+        }
+
+        if (ArrayLista.size() == 0) {
+
+            return "LA LISTA ESTA VACIA";
+        }
+
+        else {
+
+            try {
+                exportar = new ObjectOutputStream(new FileOutputStream(f));
+                exportar.writeObject(ArrayLista);
+            }
+            catch (IOException e) {
+                return "ERROR EN LA EXPORTACION";
+            }
+
+            finally {
+
+                try {
+                    exportar.close();
+                }
+                catch (IOException e) {
+                    return "ERROR EN LA EXPORTACION";
+                }
+            }
+            return "EXPORTACION COMPLETADA CON EXITO";
+        }
     }
-
-    // OPCION 0.- Salir
-
 }
