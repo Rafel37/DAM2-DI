@@ -40,7 +40,7 @@ public class Entrada {
                     coche.setModelo(scanner.next());
 
                     System.out.println("ESCRIBE UNA MATRICULA: ");
-                    coche.setModelo(scanner.next());
+                    coche.setMatricula(scanner.next());
 
                     System.out.println("ESCRIBE LOS CABALLOS DEL COCHE: ");
                     coche.setMotor(new Motor(scanner.nextInt()));

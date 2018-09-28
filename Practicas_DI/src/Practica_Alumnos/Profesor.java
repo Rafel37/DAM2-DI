@@ -1,15 +1,18 @@
 package Practica_Alumnos;
 
-import Practica_Alumnos.Alumno;
-
 public class Profesor {
 
-    public void ponerNotas (Alumno param ){
-        param.matematicas = Math.random();
-        param.lengua = Math.random();
-        param.ingles = Math.random();
+    protected void ponerNotas (Alumno a) {
+
+        a.getmatematicas().setCalificacionAsignatura(Math.random()*11);
+        a.getlengua().setCalificacionAsignatura(Math.random()*11);
+        a.getingles().setCalificacionAsignatura(Math.random()*11);
     }
-    public double calcularMedia (){
-        return (Alumno.matematicas + Alumno.lengua + Alumno.ingles)/3;
+
+    protected double calcularMedia (Alumno a) {
+
+        return (a.getmatematicas().getCalificacionAsignatura() +
+                a.getlengua().getCalificacionAsignatura() +
+                a.getingles().getCalificacionAsignatura()) / 3;
     }
 }

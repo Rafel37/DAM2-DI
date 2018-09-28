@@ -20,7 +20,7 @@ public class Gestion {
 
     protected String añadirCoche (Coche c) {
 
-        if (listaCoches.get(c.getMatricula()) != null) {
+        if (listaCoches.containsKey(c.getMatricula() != null)) {
             return "ESTE COCHE YA ESTA REGISTRADO";
         }
         else {

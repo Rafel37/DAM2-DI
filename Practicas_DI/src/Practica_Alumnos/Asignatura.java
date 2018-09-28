@@ -14,6 +14,7 @@ public class Asignatura {
 
     //CONSTRUCTOR
     public Asignatura(int nombreAsignatura) {
+
         this.nombreAsignatura = nombreAsignatura;
     }
 

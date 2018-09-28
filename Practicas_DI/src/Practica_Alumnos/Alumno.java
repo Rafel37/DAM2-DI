@@ -18,13 +18,13 @@ public class Alumno {
         this.lengua = lengua;
         this.ingles = ingles;
     }
-/**
-    public Practica_Alumnos.Alumno (Practica_Alumnos.Asignatura matematicas, Practica_Alumnos.Asignatura lengua, Practica_Alumnos.Asignatura ingles) {
-        this.matematicas = new Practica_Alumnos.Asignatura();
-        this.lengua = new Practica_Alumnos.Asignatura();
-        this.ingles = new Practica_Alumnos.Asignatura();
+
+    public Alumno(int matematicas, int lengua, int ingles) {
+        this.matematicas = new Asignatura(matematicas);
+        this.lengua = new Asignatura(lengua);
+        this.ingles = new Asignatura(ingles);
     }
-*/
+
 
     //GETTERS
     public Asignatura getmatematicas() {
