@@ -1,7 +1,7 @@
 package Practica_Calculadora_Trigonometrica;
 import java.util.Scanner;
 
-public class Circulo {
+public class Circulo extends Figura {
 
     int x,y;
     double radio;
@@ -43,6 +43,11 @@ public class Circulo {
 
     public void setRadio(double radio) {
         this.radio = radio;
+    }
+
+    @Override
+    protected double calcularPerimetro() {
+        return (2 * Math.PI) * getRadio();
     }
 
     protected double calcularArea(){

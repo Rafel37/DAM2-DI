@@ -2,7 +2,7 @@ package Practica_Calculadora_Trigonometrica;
 
 import java.util.Scanner;
 
-public class Rectangulo {
+public class Rectangulo extends Figura {
 
     int altura, anchura;
 
@@ -31,7 +31,7 @@ public class Rectangulo {
         this.anchura = anchura;
     }
 
-    protected int calcularArea() {
+    protected double calcularArea() {
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce la altura del rectángulo a calcular");
@@ -41,7 +41,7 @@ public class Rectangulo {
 
         return this.altura * this.anchura;
     }
-    protected int calcularPerimetro() {
+    protected double calcularPerimetro() {
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce la altura del rectángulo a calcular");

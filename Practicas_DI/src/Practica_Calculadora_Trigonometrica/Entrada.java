@@ -22,7 +22,7 @@ public class Entrada {
                 case 1:
                     do {
                         System.out.println(menus.menuCirculo());
-                        Circulo c = null;
+                        Figura c = null;
                         opcionP = sc.nextInt();
                         switch (opcionP) {
                             case 1:
@@ -31,7 +31,7 @@ public class Entrada {
                                 break;
                             case 2:
                                 c = new Circulo();
-                                System.out.println(String.format(mPer, c.getClass().getName(), c.calcularDiametro()));
+                                System.out.println(String.format(mPer, c.getClass().getName(), ((Circulo) c).calcularDiametro()));
                                 break;
                             case 3:
                                 c = new Circulo();
@@ -40,7 +40,7 @@ public class Entrada {
                                 int x = opCirculo.nextInt();
                                 System.out.println("Introduce posición y del circulo 1");
                                 int y = opCirculo.nextInt();
-                                System.out.println("La distancia en x entre los dos círculos es: "+c.calcularDistancia(new Circulo(x,y)));
+                                System.out.println("La distancia en x entre los dos círculos es: "+((Circulo) c).calcularDistancia(new Circulo(x,y)));
                                 break;
                             default:
                                 if (opcionP!=4){
@@ -54,7 +54,7 @@ public class Entrada {
                     do {
                         System.out.println(menus.menuRectangulo());
                         opcionP = sc.nextInt();
-                        Rectangulo r = null;
+                        Figura r = null;
                         switch (opcionP) {
                             case 1:
                                 r = new Rectangulo();
@@ -77,7 +77,7 @@ public class Entrada {
                     do {
                         System.out.println(menus.menuTriangulo());
                         opcionP = sc.nextInt();
-                        Triangulo t = null;
+                        Figura t = null;
                         switch (opcionP) {
                             case 1:
                                 t = new Triangulo();

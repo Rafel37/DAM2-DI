@@ -1,7 +1,7 @@
 package Practica_Calculadora_Trigonometrica;
 import java.util.Scanner;
 
-public class Triangulo {
+public class Triangulo extends Figura{
 
     int base, altura;
 
@@ -30,7 +30,12 @@ public class Triangulo {
         this.altura = altura;
     }
 
-    protected int calcularArea(){
+    @Override
+    protected double calcularPerimetro() {
+        return getBase() * 3;
+    }
+
+    protected double calcularArea(){
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce la base del triángulo a calcular");
