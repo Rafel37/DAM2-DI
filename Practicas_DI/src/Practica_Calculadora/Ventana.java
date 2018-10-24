@@ -15,7 +15,6 @@ public class Ventana extends JFrame {
         instancias(); //para las variables logicas, textos botones, etc
         intGUI(); //para hacer la ventana de verdad
         acciones();//donde van los listener
-
     }
 
     private void acciones() { //que va a hacer cada elemento, para los listener
@@ -23,14 +22,15 @@ public class Ventana extends JFrame {
     }
 
     private void intGUI() { //la colocacion en el tablero de juego
+        setTitle("Ejemplo inicial");
         contenedor.setLayout(new BorderLayout());
         setVisible(true);//para ver la ventana//siempre
-
-
+        setSize(500, 500); //pones un tamaño de serie a la ventana
+        setLocationRelativeTo(null);
     }
 
     private void instancias() {//darles valor
-        boton1 = new JButton();//ALGUNOS TENDRE LA OPORTUNIDAD DE METER TEXTO ROLLO, ACEPOTAR, CANCELAR
+        boton1 = new JButton("BOTON 1");//ALGUNOS TENDRE LA OPORTUNIDAD DE METER TEXTO ROLLO, ACEPOTAR, CANCELAR
         contenedor = getContentPane();//este siempre se instancia AQUI
     }
 }
