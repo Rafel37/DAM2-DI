@@ -8,7 +8,8 @@ public class Entrada {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                Ventana v = new Ventana();
+                Calculadora c = new Calculadora();
+                c.setVisible(true); //HACER VISIBLE LA VENTANA
             }
         });
     }
