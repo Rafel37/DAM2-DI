@@ -1,5 +1,4 @@
-
-package Practica_Calculadora;
+package inicio.elementos;
 
 import javax.swing.*;
 
@@ -9,9 +8,9 @@ public class Entrada {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                Calculadora c = new Calculadora();
-                c.setVisible(true); //HACER VISIBLE LA VENTANA
+                Ventana v = new Ventana();
             }
         });
     }
+
 }
