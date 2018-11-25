@@ -1,5 +1,5 @@
 
-package Formulario;
+package Practicas_DI.src.Formulario;
 
 import javax.swing.*;
 

@@ -1,5 +1,5 @@
 
-package Formulario;
+package Practicas_DI.src.Formulario;
 
 
 import javax.swing.*;
@@ -7,8 +7,8 @@ import java.awt.*;
 
 public class Formulario extends JFrame {
 
-    private JLabel nombreLabel, tratamientoLabel, apellidoLabel, direccionLabel, numeroLabel, puertaLabel, ciudadLabel, paisLabel, pagoLabel;
-    private JTextField nombreField, apellido1Field, apellido2Field, direccionField, numeroField, puertaField, ciudadField, paisField, finalField;
+    private JLabel nombreLabel, tratamientoLabel, apellidoLabel, telefonoLabel, direccionLabel, numeroLabel, puertaLabel, ciudadLabel, paisLabel, pagoLabel;
+    private JTextField nombreField, apellido1Field, telefonoField, direccionField, numeroField, puertaField, ciudadField, paisField, finalField;
 
     JSpinner tratamientoSpinner, pagoSpinner;
 
@@ -32,6 +32,7 @@ public class Formulario extends JFrame {
         nombreLabel = new JLabel("Nombre:");
         tratamientoLabel = new JLabel("Tratamiento:");
         apellidoLabel = new JLabel("Apellido:");
+        telefonoLabel = new JLabel("Telefono:");
         direccionLabel = new JLabel("Dirección:");
         numeroLabel = new JLabel("Numeros:");
         puertaLabel = new JLabel("Puerta:");
@@ -44,7 +45,7 @@ public class Formulario extends JFrame {
 
         nombreField = new JTextField();
         apellido1Field = new JTextField();
-        apellido2Field = new JTextField();
+        telefonoField = new JTextField();
         direccionField = new JTextField();
         numeroField = new JTextField();
         puertaField = new JTextField();
@@ -77,7 +78,8 @@ public class Formulario extends JFrame {
 
         configurarContenedor(1, 0, 1, 1, 1, 1, new Insets(5,5,5,5), GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL, apellidoLabel);
         configurarContenedor(1, 1, 1, 1, 1, 1, new Insets(5,5,5,5), GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL, apellido1Field);
-        configurarContenedor(1, 2, 2, 1, 1, 1, new Insets(5,5,5,5), GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL, apellido2Field);
+        configurarContenedor(1, 2, 1, 1, 1, 1, new Insets(5,5,5,5), GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL, telefonoLabel);
+        configurarContenedor(1, 3, 1, 1, 1, 1, new Insets(5,5,5,5), GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL, telefonoField);
 
         configurarContenedor(2, 0, 1, 1, 1, 1, new Insets(5,5,5,5), GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL, numeroLabel);
         configurarContenedor(2, 1, 1, 1, 1, 1, new Insets(5,5,5,5), GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL, numeroField);
