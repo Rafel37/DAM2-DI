@@ -1,5 +1,5 @@
 
-package Practicas_DI.src.Formulario;
+package Formulario;
 
 import javax.swing.*;
 
@@ -9,8 +9,9 @@ public class Entrada {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                Formulario c = new Formulario();
-                c.setVisible(true); //HACER VISIBLE LA VENTANA
+                Formulario f = new Formulario();
+                Modelo m = new Modelo();
+                f.setVisible(true); //HACER VISIBLE LA VENTANA
             }
         });
     }

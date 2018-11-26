@@ -1,4 +1,4 @@
-package Practicas_DI.src.Formulario;
+package Formulario;
 
 import javax.swing.*;
 import java.awt.*;

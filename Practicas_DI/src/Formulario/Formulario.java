@@ -1,5 +1,5 @@
 
-package Practicas_DI.src.Formulario;
+package Formulario;
 
 
 import javax.swing.*;
@@ -34,7 +34,7 @@ public class Formulario extends JFrame {
         apellidoLabel = new JLabel("Apellido:");
         telefonoLabel = new JLabel("Telefono:");
         direccionLabel = new JLabel("Dirección:");
-        numeroLabel = new JLabel("Numeros:");
+        numeroLabel = new JLabel("Numero:");
         puertaLabel = new JLabel("Puerta:");
         ciudadLabel = new JLabel("Ciudad:");
         paisLabel = new JLabel("Pais:");
