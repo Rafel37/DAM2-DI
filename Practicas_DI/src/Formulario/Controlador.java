@@ -1,5 +1,6 @@
 package Formulario;
 
+import Formulario.utils.Pais;
 import Formulario.utils.Persona;
 
 import javax.swing.*;
@@ -13,10 +14,28 @@ public class Controlador implements ActionListener, ItemListener {
 
     Vista objetoVista;
     ArrayList<Persona> listaPersonas = new ArrayList();
+    ArrayList<Pais> paises = new ArrayList();
 
     public Controlador(Vista objetoVista) {
         this.objetoVista = objetoVista;
+        rellenarPaises();
         acciones();
+    }
+
+    private void rellenarPaises() {
+
+        ArrayList<String> ciudades = new ArrayList();
+        ciudades.add("Madrid");
+        ciudades.add("Barcelona");
+        ciudades.add("Murcia");
+        ciudades.add("Valencia");
+
+        paises.add(new Pais("España", ciudades));
+        for (String c: ciudades) {
+
+            objetoVista.getBusqueda().getCiudadModel().addElement(c);
+        }
+        objetoVista.getBusqueda().getModeloCombo().addElement(paises);
     }
 
     private void acciones() {
@@ -55,18 +74,87 @@ public class Controlador implements ActionListener, ItemListener {
 
         else if (e.getSource() == objetoVista.getBusqueda().getBuscar()) {
 
+            System.out.println(listaPersonas.size());
+
             if (!objetoVista.getBusqueda().getNombreField().getText().isEmpty() &&
                     !objetoVista.getBusqueda().getTelefonoField().getText().isEmpty() &&
-                    objetoVista.getBusqueda().getCiudadField().getSelectedIndex()!=-1) {
+                    objetoVista.getBusqueda().getCiudadList().getSelectedIndex()!=-1) {
 
-                objetoVista.getBusqueda().getModelol2().clear();
+                objetoVista.getBusqueda().getPersonaModel().clear();
+
                 for (Persona c : listaPersonas) {
                     if (c.getNombre().equals(objetoVista.getBusqueda().getNombreField().getText()) &&
-                            c.getNumero() == Integer.parseInt(objetoVista.getBusqueda().getTelefonoField().getText()) &&
-                            c.getCiudadField().equals(objetoVista.getBusqueda().getCiudadField().getSelectedValue().toString()))
-                        objetoVista.getBusqueda().getModelol2().addElement(c);
+                            c.getTelefono() == Integer.parseInt(objetoVista.getBusqueda().getTelefonoField().getText()) &&
+                            c.getCiudad().equals(objetoVista.getBusqueda().getCiudadList().getSelectedValue().toString()))
+                        objetoVista.getBusqueda().getPersonaModel().addElement(c);
                 }
             }
+            else if (!objetoVista.getBusqueda().getNombreField().getText().isEmpty() &&
+                    !objetoVista.getBusqueda().getTelefonoField().getText().isEmpty()) {
+
+                objetoVista.getBusqueda().getPersonaModel().clear();
+
+                for (Persona c : listaPersonas) {
+                    if (c.getNombre().equals(objetoVista.getBusqueda().getNombreField().getText()) &&
+                            c.getTelefono() == Integer.parseInt(objetoVista.getBusqueda().getTelefonoField().getText()))
+                        objetoVista.getBusqueda().getPersonaModel().addElement(c);
+                }
+            }
+            else if (!objetoVista.getBusqueda().getNombreField().getText().isEmpty() &&
+                    objetoVista.getBusqueda().getCiudadList().getSelectedIndex()!=-1) {
+
+                objetoVista.getBusqueda().getPersonaModel().clear();
+
+                for (Persona c : listaPersonas) {
+                    if (c.getNombre().equals(objetoVista.getBusqueda().getNombreField().getText()) &&
+                            c.getCiudad().equals(objetoVista.getBusqueda().getCiudadList().getSelectedValue().toString()))
+                        objetoVista.getBusqueda().getPersonaModel().addElement(c);
+                }
+            }
+            else if (!objetoVista.getBusqueda().getTelefonoField().getText().isEmpty() &&
+                    objetoVista.getBusqueda().getCiudadList().getSelectedIndex()!=-1) {
+
+                objetoVista.getBusqueda().getPersonaModel().clear();
+
+                for (Persona c : listaPersonas) {
+                    if (c.getTelefono() == Integer.parseInt(objetoVista.getBusqueda().getTelefonoField().getText()) &&
+                            c.getCiudad().equals(objetoVista.getBusqueda().getCiudadList().getSelectedValue().toString()))
+                        objetoVista.getBusqueda().getPersonaModel().addElement(c);
+                }
+            }
+
+            else if (!objetoVista.getBusqueda().getNombreField().getText().isEmpty() ) {
+
+                objetoVista.getBusqueda().getPersonaModel().clear();
+
+                for (Persona c : listaPersonas) {
+                    if (c.getNombre().equals(objetoVista.getBusqueda().getNombreField().getText()))
+                        objetoVista.getBusqueda().getPersonaModel().addElement(c);
+                }
+            }
+            else if (objetoVista.getBusqueda().getCiudadList().getSelectedIndex()!=-1) {
+
+                objetoVista.getBusqueda().getPersonaModel().clear();
+
+                for (Persona c : listaPersonas) {
+                    if (c.getCiudad().equals(objetoVista.getBusqueda().getCiudadList().getSelectedValue().toString()))
+                        objetoVista.getBusqueda().getPersonaModel().addElement(c);
+                }
+            }
+            else if (!objetoVista.getBusqueda().getTelefonoField().getText().isEmpty()) {
+
+                objetoVista.getBusqueda().getPersonaModel().clear();
+
+                for (Persona c : listaPersonas) {
+                    if (c.getTelefono() == Integer.parseInt(objetoVista.getBusqueda().getTelefonoField().getText()))
+                        objetoVista.getBusqueda().getPersonaModel().addElement(c);
+                }
+            }
+
+
+
+
+            Limpiar();
         }
     }
 
@@ -77,15 +165,16 @@ public class Controlador implements ActionListener, ItemListener {
 
     private void Limpiar() {
 
-        objetoVista.getRegistro().getNombreField().setText(" ");
-        objetoVista.getRegistro().getApellido1Field().setText(" ");
-        objetoVista.getRegistro().getDireccionField().setText(" ");
-        objetoVista.getRegistro().getPuertaField().setText(" ");
-        objetoVista.getRegistro().getPaisField().setText(" ");
-        objetoVista.getRegistro().getCiudadField().setText(" ");
-        objetoVista.getRegistro().getFinalField().setText(" ");
+        objetoVista.getRegistro().getNombreField().setText("");
+        objetoVista.getRegistro().getApellido1Field().setText("");
+        objetoVista.getRegistro().getDireccionField().setText("");
+        objetoVista.getRegistro().getPuertaField().setText("");
+        objetoVista.getRegistro().getPaisField().setText("");
+        objetoVista.getRegistro().getCiudadField().setText("");
+        objetoVista.getRegistro().getFinalField().setText("");
+        objetoVista.getRegistro().getNumeroField().setText("");
         objetoVista.getRegistro().getModeloTratamiento().setValue(0);
-        objetoVista.getRegistro().getTelefonoField().setText(" ");
+        objetoVista.getRegistro().getTelefonoField().setText("");
         objetoVista.getRegistro().getModeloPago().setValue(0);
     }
 }

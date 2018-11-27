@@ -36,8 +36,11 @@ public class Busqueda extends JPanel {
         resultadoLabel = new JLabel("Resultado:");
         nombreField = new JTextField();
         telefonoField = new JTextField();
-        ciudadField = new JTextField();
-        resultadoField = new JTextField();
+
+        ciudadModel = new DefaultListModel();
+        personaModel = new DefaultListModel();
+        ciudadList = new JList(ciudadModel);
+        personaList = new JList(personaModel);
 
         modeloCombo = new DefaultComboBoxModel();
         paisCombo = new JComboBox(modeloCombo);
@@ -64,10 +67,10 @@ public class Busqueda extends JPanel {
         configurarContenedor(2, 1, 1, 1, 1, 1, new Insets(5,5,5,5), GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL, paisCombo);
 
         configurarContenedor(3, 0, 1, 1, 1, 1, new Insets(5,5,5,5), GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL, ciudadLabel);
-        configurarContenedor(3, 1, 1, 1, 1, 1, new Insets(5,5,5,5), GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL, ciudadField);
+        configurarContenedor(3, 1, 1, 1, 1, 1, new Insets(5,5,5,5), GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL, new JScrollPane(ciudadList));
 
         configurarContenedor(5, 0, 1, 1, 1, 1, new Insets(5,5,5,5), GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL, resultadoLabel);
-        configurarContenedor(5, 1, 1, 1, 1, 1, new Insets(5,5,5,5), GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL, resultadoField);
+        configurarContenedor(5, 1, 1, 1, 1, 1, new Insets(5,5,5,5), GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL, new JScrollPane(personaList));
 
         configurarContenedor(7, 0, 2, 2, 1, 1, new Insets(5,5,5,5), GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL, buscar);
 
@@ -96,14 +99,6 @@ public class Busqueda extends JPanel {
         return telefonoField;
     }
 
-    public JTextField getCiudadField() {
-        return ciudadField;
-    }
-
-    public JTextField getResultadoField() {
-        return resultadoField;
-    }
-
     public DefaultComboBoxModel getModeloCombo() {
         return modeloCombo;
     }
@@ -114,5 +109,21 @@ public class Busqueda extends JPanel {
 
     public JButton getBuscar() {
         return buscar;
+    }
+
+    public DefaultListModel getCiudadModel() {
+        return ciudadModel;
+    }
+
+    public DefaultListModel getPersonaModel() {
+        return personaModel;
+    }
+
+    public JList getCiudadList() {
+        return ciudadList;
+    }
+
+    public JList getPersonaList() {
+        return personaList;
     }
 }

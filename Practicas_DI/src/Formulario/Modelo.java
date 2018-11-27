@@ -1,4 +1,4 @@
-//package Formulario;
+//package Practicas_DI.src.Formulario;
 //
 //public class Modelo {
 //
@@ -11,7 +11,5 @@
 //        return "El nombre introducido es: " + puerta;
 //        return "El nombre introducido es: " + ciudad;
 //        return "El nombre introducido es: " + pais;
-//
 //    }
-//
 //}
