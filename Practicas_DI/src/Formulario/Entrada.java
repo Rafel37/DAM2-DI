@@ -9,9 +9,8 @@ public class Entrada {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                Formulario f = new Formulario();
-                Modelo m = new Modelo();
-                f.setVisible(true); //HACER VISIBLE LA VENTANA
+                Vista v = new Vista();
+                v.setVisible(true); //HACER VISIBLE LA VENTANA
             }
         });
     }

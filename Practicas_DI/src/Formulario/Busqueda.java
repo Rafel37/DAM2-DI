@@ -3,23 +3,25 @@ package Formulario;
 import javax.swing.*;
 import java.awt.*;
 
-public class Busqueda extends JFrame {
+public class Busqueda extends JPanel {
 
     private JLabel nombreLabel,  telefonoLabel, ciudadLabel, paisLabel, resultadoLabel;
     private JTextField nombreField, telefonoField, ciudadField, resultadoField;
 
-    JSpinner paisSpinner;
+    DefaultListModel ciudadModel, personaModel;
+    private JList ciudadList, personaList;
+
+    DefaultComboBoxModel modeloCombo;
+    JComboBox paisCombo;
 
     private JButton buscar;
 
     GridBagConstraints contenedor = new GridBagConstraints(); //es el tipo de colocacion que hemos elegido
 
-
     //Constructos de la ventana
     public Busqueda() throws HeadlessException { //constructor en la que va 3 clases siempre minimo
-        instancias(); //para las variables logicas, textos botones, etc
-        intGUI(); //para hacer la ventana de verdad
-        acciones();//donde van los listener
+        instancias();
+        intGUI();
     }
 
 
@@ -37,21 +39,16 @@ public class Busqueda extends JFrame {
         ciudadField = new JTextField();
         resultadoField = new JTextField();
 
-        paisSpinner = new JSpinner();
+        modeloCombo = new DefaultComboBoxModel();
+        paisCombo = new JComboBox(modeloCombo);
 
         buscar = new JButton("Buscar");
     }
 
     //la colocacion de los elementos en la ventana
     private void intGUI() {
-        getContentPane().setLayout(new GridBagLayout()); //poner estos siempre
+        setLayout(new GridBagLayout()); //poner estos siempre
         configurarPanelCentral(); //metodo
-        setTitle("Formulario"); //titulo
-        setVisible(true); //Hace que la ventana sea visible
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //Detiene la aplicacion cuando cierras la ventana
-        setSize(500,500); //tamaño del cuadro
-        setLocationRelativeTo(null); //colocas el cuadro en el centro
-        //setResizable(false); //No se puede mover
     }
 
     private void configurarPanelCentral() {
@@ -64,7 +61,7 @@ public class Busqueda extends JFrame {
 
 
         configurarContenedor(2, 0, 1, 1, 1, 1, new Insets(5,5,5,5), GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL, paisLabel);
-        configurarContenedor(2, 1, 1, 1, 1, 1, new Insets(5,5,5,5), GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL, paisSpinner);
+        configurarContenedor(2, 1, 1, 1, 1, 1, new Insets(5,5,5,5), GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL, paisCombo);
 
         configurarContenedor(3, 0, 1, 1, 1, 1, new Insets(5,5,5,5), GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL, ciudadLabel);
         configurarContenedor(3, 1, 1, 1, 1, 1, new Insets(5,5,5,5), GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL, ciudadField);
@@ -91,10 +88,31 @@ public class Busqueda extends JFrame {
         this.add(c,contenedor);
     }
 
+    public JTextField getNombreField() {
+        return nombreField;
+    }
 
-    //Para los escuchadores y dar funcionalidad a cada elemento
-    private void acciones() {
+    public JTextField getTelefonoField() {
+        return telefonoField;
+    }
 
+    public JTextField getCiudadField() {
+        return ciudadField;
+    }
 
+    public JTextField getResultadoField() {
+        return resultadoField;
+    }
+
+    public DefaultComboBoxModel getModeloCombo() {
+        return modeloCombo;
+    }
+
+    public JComboBox getPaisCombo() {
+        return paisCombo;
+    }
+
+    public JButton getBuscar() {
+        return buscar;
     }
 }
