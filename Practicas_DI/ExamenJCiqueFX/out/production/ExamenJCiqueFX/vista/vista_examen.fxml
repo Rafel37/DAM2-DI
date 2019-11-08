@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane fx:id="gridPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladoras.Controladora">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="44.0" minHeight="22.0" prefHeight="44.0" />
+        <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="113.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="235.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="199.0" minHeight="10.0" prefHeight="156.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="71.0" minHeight="0.0" prefHeight="22.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="71.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="71.0" minHeight="10.0" prefHeight="18.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="71.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <ComboBox fx:id="generoCombo_serie" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+        <ListView fx:id="lista_pelicula" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+            <GridPane.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </GridPane.margin>
+        </ListView>
+        <Label text="Peliculas" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+        <Label text="Series" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+        <Button fx:id="btn_pelicula" mnemonicParsing="false" text="Filtrar" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+        <Button fx:id="btn_serie" mnemonicParsing="false" text="Filtrar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+        <ListView fx:id="lista_serie" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <GridPane.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </GridPane.margin>
+        </ListView>
+        <Label fx:id="titulo_pelicula" text="Titulo" GridPane.rowIndex="5" />
+        <Label fx:id="titulo_serie" text="Titulo" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+        <Label fx:id="genero_pelicula" text="Genero" GridPane.rowIndex="6" />
+        <Label fx:id="protagonista_pelicula" text="Protagonista" GridPane.rowIndex="7" />
+        <Label fx:id="ano_pelicula" text="Año" GridPane.rowIndex="8" />
+        <Label fx:id="genero_serie" text="Genero" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+        <Label fx:id="cadena_serie" text="Cadena" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+        <Label fx:id="temporadas_serie" text="Temporadas" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+        <ComboBox fx:id="generoCombo_pelicula" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.rowIndex="1" />
+        <ComboBox fx:id="protagonistaCombo_pelicula" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.rowIndex="2" />
+        <ComboBox fx:id="cadenaCombo_serie" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+    </children>
+</GridPane>

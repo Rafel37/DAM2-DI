@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="T4_JSON">
+    <output-path>$PROJECT_DIR$/out/artifacts/T4_JSON</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="Main" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="title" value="" />
+        <option name="vendor" value="" />
+        <option name="version" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="T4_JSON.jar">
+        <element id="module-output" name="T4_JSON" />
+      </element>
+    </root>
+  </artifact>
+</component>

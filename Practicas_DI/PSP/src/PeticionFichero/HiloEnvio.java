@@ -1,0 +1,44 @@
+package PeticionFichero;
+
+        import java.net.*;
+        import java.io.*;
+
+public class HiloEnvio extends Thread
+{
+    private File archivo;
+    private Socket socketCliente = null;
+    private FileInputStream fileChannel = null;
+    DataInputStream input;
+    BufferedInputStream bis;
+    BufferedOutputStream bos;
+    int in;
+    byte[] byteArray;
+
+
+    public HiloEnvio(Socket socketCliente, File archivo){ this.socketCliente = socketCliente; this.archivo = archivo; }
+
+    public void run() {
+
+        try{
+            byte [] mybytearray  = new byte [(int)archivo.length()];
+            fileChannel = new FileInputStream(archivo);
+            bos = new BufferedOutputStream(socketCliente.getOutputStream());
+            bis = new BufferedInputStream(fileChannel);
+
+            DataOutputStream dos = new DataOutputStream(socketCliente.getOutputStream());
+            dos.writeUTF(archivo.getName());
+
+            System.out.println("ENVIANDO: " + archivo);
+
+
+            byteArray = new byte[8192];
+            while ((in = bis.read(byteArray)) != -1){
+                bos.write(byteArray,0,in);
+            }
+            System.out.println("Done.");
+
+        }
+        catch (IOException | NullPointerException e) { System.out.println("ERROR! TRANSFERENCIA INTERRUMPIDA. ");
+            interrupt();}
+    }
+}

@@ -1,0 +1,273 @@
+
+*************************************************************************************************************
+El cliente SSL carga el fichero AlmacenTrust creado  con la herramienta Keytool conteniendo el
+certificado de clave pública del servidor
+
+El cliente ademas carga el almacen AlmacenCL que es el mismo fichero que AlmacenSR. Este fichero contendrá
+la claveprivada y el certificado del cliente que en este ejemplo es un certificado autofirmado igual en el
+cliente y en servidor.
+
+
+Los almacenes los cargamos con las properties
+
+
+El cliente obtiene el certificado de clave publica del servidor y lo imprime a fichero
+
+
+
+***********************************************************************************************************
+El servidor carga el fichero AlmacenSR donde está un certificado autofirmado creado por el servidor con
+la herramienta Keytool (key entry) y tambien el fichero AlmacenTrust con el certificado de clave publica.
+Este segundo almacen lo utiliza para autenticar al cliente.
+
+En este al tener un certificado Autofirmado es igual el certificado del cliente que el del servidor. Y por consiguiente
+son iguales los almacenes AlmacenSR y AlmacenCL. Almacentrust tambien es igual en el cliente que el del servidor.
+
+Los almacenes los cargamos con las properties
+
+
+
+**********************************************************************************************************
+
+
+
+
+
+Para usar JSSE en nuestras aplicacioens se necesita especificar varias propiedades del sistema. Esto 
+se hace con las properties->
+
+javax.net.ssl.trustStore: El nombre del fichero que contiene el objeto Keystore que se quiere que use por defecto el TrustManager
+El valor por defecto es jssecacers o cacerts
+
+
+javax.net.ssl.KeyStore: El nombre del fichero que contiene el objeto Keystore que se quiere que use por defecto el KeyManager
+
+javax.net.ssl.KeyStorePassword: La password del objeto KeyStore que se quiere que utilice el KeyManager
+
+
+***************************************************************************************************************
+
+1. generamos el par de claves publica y secreta y se almacenan en el almacen AlmacenSR
+
+keytool -genkey -alias CertificadoAutofirmado  -keyalg RSA -validity "100" -keystore AlmacenSR -keypass oooooo -storepass oooooo
+
+keytool  -list -v -keystore AlmacenSR
+
+
+
+2 Generamos en un fichero .cer el certificado de clave publica
+
+keytool -export -alias CertificadoAutofirmado -keystore AlmacenSR -rfc -file CertAutofirmado.cer
+
+
+
+
+3. METEMOS EL CERTIFICADO autofirmado EN UN ALMACEN PARA QUE LO USE EL CLIENTE
+
+
+keytool -import -alias CertificadoAutofirmado -file CertAutofirmado.cer -keystore AlmacenTrust
+
+keytool  -list -v -keystore AlmacenTrust
+
+
+
+
+****************************************************************************************************
+
+
+
+
+D:\BORRAR\CONEXION_SIMPLE\CONEXION_SSL_SIMPLE_4\SERVIDOR>keytool -genkey -alias
+CertificadoAutofirmado  -keyalg RSA -validity "100" -keystore AlmacenSR -keypass
+ oooooo -storepass oooooo
++Cußles son su nombre y su apellido?
+  [Unknown]:  alumno1
++Cußl es el nombre de su unidad de organizaci¾n?
+  [Unknown]:  fim
++Cußl es el nombre de su organizaci¾n?
+  [Unknown]:  upm
++Cußl es el nombre de su ciudad o localidad?
+  [Unknown]:  boa
++Cußl es el nombre de su estado o provincia?
+  [Unknown]:  ma
++Cußl es el c¾digo de paÝs de dos letras de la unidad?
+  [Unknown]:  es
++Es correcto CN=alumno1, OU=fim, O=upm, L=boa, ST=ma, C=es?
+  [no]:  y
+
+
+
+D:\BORRAR\CONEXION_SIMPLE\CONEXION_SSL_SIMPLE_4\SERVIDOR>keytool  -list -v -keystore AlmacenSR
+Escriba la contrase±a del almacÚn de claves:  oooooo
+
+Tipo de almacÚn de claves: jks
+Proveedor de almacÚn de claves: SUN
+
+Su almacÚn de claves contiene entrada 1
+
+Nombre de alias: certificadoautofirmado
+Fecha de creaci¾n: 22-sep-2009
+Tipo de entrada: keyEntry
+Longitud de la cadena de certificado: 1
+Certificado[1]:
+Propietario: CN=alumno1, OU=fim, O=upm, L=boa, ST=ma, C=es
+Emisor: CN=alumno1, OU=fim, O=upm, L=boa, ST=ma, C=es
+N·mero de serie: 4ab8a8c8
+Vßlido desde: Tue Sep 22 12:36:56 CEST 2009 hasta: Thu Dec 31 11:36:56 CET 2009
+Huellas digitales del certificado:
+         MD5:  BC:F1:49:9A:02:5E:2E:91:27:C4:F9:FA:E3:3B:35:0A
+         SHA1: 45:A7:23:A0:BB:60:FE:7A:FA:C9:6F:B3:8E:CF:2E:D8:F6:3A:02:1E
+
+
+*******************************************
+*******************************************
+
+
+
+
+
+
+
+
+D:\BORRAR\CONEXION_SIMPLE\CONEXION_SSL_SIMPLE_4\SERVIDOR>keytool -export -alias
+CertificadoAutofirmado -keystore AlmacenSR -rfc -file CertAutofirmado.cer
+Escriba la contrase±a del almacÚn de claves:  oooooo
+Certificado almacenado en el archivo <CertAutofirmado.cer>
+
+
+
+
+D:\BORRAR\CONEXION_SIMPLE\CONEXION_SSL_SIMPLE_4\SERVIDOR>keytool -import -alias
+CertificadoAutofirmado -file CertAutofirmado.cer -keystore AlmacenTrust
+Escriba la contrase±a del almacÚn de claves:  oooooo
+Propietario: CN=alumno1, OU=fim, O=upm, L=boa, ST=ma, C=es
+Emisor: CN=alumno1, OU=fim, O=upm, L=boa, ST=ma, C=es
+N·mero de serie: 4ab8a8c8
+Vßlido desde: Tue Sep 22 12:36:56 CEST 2009 hasta: Thu Dec 31 11:36:56 CET 2009
+Huellas digitales del certificado:
+         MD5:  BC:F1:49:9A:02:5E:2E:91:27:C4:F9:FA:E3:3B:35:0A
+         SHA1: 45:A7:23:A0:BB:60:FE:7A:FA:C9:6F:B3:8E:CF:2E:D8:F6:3A:02:1E
++Confiar en este certificado? [no]:  y
+Se ha a±adido el certificado al almacÚn de claves
+
+D:\BORRAR\CONEXION_SIMPLE\CONEXION_SSL_SIMPLE_4\SERVIDOR>
+D:\BORRAR\CONEXION_SIMPLE\CONEXION_SSL_SIMPLE_4\SERVIDOR>keytool  -list -v -keys
+tore AlmacenTrust
+Escriba la contrase±a del almacÚn de claves:  oooooo
+
+Tipo de almacÚn de claves: jks
+Proveedor de almacÚn de claves: SUN
+
+Su almacÚn de claves contiene entrada 1
+
+Nombre de alias: certificadoautofirmado
+Fecha de creaci¾n: 22-sep-2009
+Tipo de entrada: trustedCertEntry
+
+Propietario: CN=alumno1, OU=fim, O=upm, L=boa, ST=ma, C=es
+Emisor: CN=alumno1, OU=fim, O=upm, L=boa, ST=ma, C=es
+N·mero de serie: 4ab8a8c8
+Vßlido desde: Tue Sep 22 12:36:56 CEST 2009 hasta: Thu Dec 31 11:36:56 CET 2009
+Huellas digitales del certificado:
+         MD5:  BC:F1:49:9A:02:5E:2E:91:27:C4:F9:FA:E3:3B:35:0A
+         SHA1: 45:A7:23:A0:BB:60:FE:7A:FA:C9:6F:B3:8E:CF:2E:D8:F6:3A:02:1E
+
+
+*******************************************
+*******************************************
+
+
+
+D:\BORRAR\CONEXION_SIMPLE\CONEXION_SSL_SIMPLE_4\SERVIDOR>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

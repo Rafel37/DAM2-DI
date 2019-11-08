@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladoras.ControladoraMenus">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Menu1">
+            <items>
+              <MenuItem fx:id="menuAbrir" mnemonicParsing="false" text="Abrir" />
+                <MenuItem fx:id="menuCerrar" mnemonicParsing="false" text="Cerrar" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Menu2">
+            <items>
+                  <Menu mnemonicParsing="false" text="Radio">
+                     <items>
+                        <RadioMenuItem fx:id="menuRadio1" mnemonicParsing="false" text="Opcion1" />
+                        <RadioMenuItem fx:id="menuRadio2" mnemonicParsing="false" text="Opcion2" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Check">
+                     <items>
+                        <CheckMenuItem fx:id="menuCheck1" mnemonicParsing="false" text="Opcion1" />
+                        <CheckMenuItem fx:id="menuCheck2" mnemonicParsing="false" text="Opcion2" />
+                     </items>
+                  </Menu>
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="commons-codec-20041127.091804">
+    <CLASSES>
+      <root url="jar:///media/kalimero/RAFAEL/commons-codec-20041127.091804.jar!/" />
+      <root url="jar:///media/kalimero/RAFAEL/commons-httpclient-3.1.jar!/" />
+      <root url="jar:///media/kalimero/RAFAEL/commons-logging-1.2.1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

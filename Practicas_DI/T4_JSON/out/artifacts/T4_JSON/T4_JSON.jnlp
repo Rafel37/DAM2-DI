@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="T4_JSON.jnlp">
+  <information>
+    <title>T4_JSON</title>
+    <vendor>Unknown</vendor>
+    <description>T4_JSON</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="T4_JSON.jar" size="8393" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="600" height="400" main-class="Main"  name="T4_JSON" />
+  <update check="background"/>
+</jnlp>
